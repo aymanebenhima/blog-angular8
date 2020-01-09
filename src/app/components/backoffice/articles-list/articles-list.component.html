@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <h1>List of articles</h1>
     </div>
-    <div class="col-md-6 text-right"><a href="" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> New</a></div>
+    <div class="col-md-6 text-right"><a routerLink="/blog/create" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> New</a></div>
 </div>
 <div class="row">
     <div class="col-md-12">
@@ -24,7 +24,7 @@
                     <td> {{ article.created_at }} </td>
                     <td> {{ article.price }} </td>
                     <td nowrap>
-                        <a href="" class="btn btn-warning btn-sm mr-1"><i class="fa fa-pencil"></i></a><button class="btn btn-dark btn-sm"><i class="fa fa-times"></i></button>
+                        <a [routerLink]="['/blog', article.id, 'edit']" class="btn btn-warning btn-sm mr-1"><i class="fa fa-pencil"></i></a><button class="btn btn-dark btn-sm"><i class="fa fa-times"></i></button>
                     </td>
                 </tr>
             </tbody>

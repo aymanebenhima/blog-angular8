@@ -1,1 +1,50 @@
-<p>articles-edit works!</p>
+<div class="row mt-3">
+    <div class="col-md-6">
+        <h1>Edit article</h1>
+    </div>
+    <div class="col-md-6 text-right">
+        <a href="" class="btn btn-link"><i class="fa fa-arrow-circle-left"></i> Back to list</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <form [formGroup]="articleForm" (ngSubmit)="persistArticle()">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input formControlName="title" id="title" type="text" class="form-control">
+                <div
+                    *ngIf="articleForm.get('title').touched && articleForm.get('title').invalid"
+                    class="alert alert-danger my-2">
+                    <div *ngIf="articleForm.get('title').errors.required">Title is Required !</div>
+                    <div *ngIf="articleForm.get('title').errors.minlength">Title should be great than 10 Caracters !</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="body">Body</label>
+                <textarea formControlName="body" name="" id="body" rows="5" class="form-control"></textarea>
+                <div
+                        *ngIf="articleForm.get('body').touched && articleForm.get('body').invalid"
+                        class="alert alert-danger my-2">
+                    <div *ngIf="articleForm.get('body').errors.required">Body is Required !</div>
+                 </div>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input formControlName="price" id="price" type="text" class="form-control">
+                <div
+                        *ngIf="articleForm.get('price').touched && articleForm.get('price').invalid"
+                        class="alert alert-danger my-2">
+                    <div *ngIf="articleForm.get('price').errors.required">Price is Required !</div>
+                    <div *ngIf="articleForm.get('price').errors.pattern">Price is not respect our pattern !</div>
+                </div>
+            </div>
+            <div class="form-check my-3">
+            <label class="form-check-label">
+                <input formControlName="active" type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
+                Active
+            </label>
+            </div>
+            <button [disabled]="articleForm.invalid" class="btn btn-secondary btn-block"><i class="fa fa-send"></i> Update Article</button>
+        </form>
+    </div>
+</div>

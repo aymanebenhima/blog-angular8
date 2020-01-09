@@ -16,8 +16,10 @@ export class ArticleService {
   }
 
   saveArticle(data: Article) {
-    
     return this.afs.collection('articles').add(data);
+  }
 
+  getOneArticle(id: string) {
+    return this.afs.collection('articles').doc(id).valueChanges();
   }
 }
