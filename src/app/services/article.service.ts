@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Article } from '../models/article';
 
 
 @Injectable({
@@ -12,5 +13,11 @@ export class ArticleService {
   getAll() {
 
     return this.afs.collection('articles').valueChanges();
+  }
+
+  saveArticle(data: Article) {
+    
+    return this.afs.collection('articles').add(data);
+
   }
 }
