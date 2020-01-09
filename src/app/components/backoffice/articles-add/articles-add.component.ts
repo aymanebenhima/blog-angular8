@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-articles-add',
@@ -9,9 +9,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class ArticlesAddComponent implements OnInit {
 
   articleForm = new FormGroup({
-    title: new FormControl(""),
-    body: new FormControl(""),
-    price: new FormControl(0),
+    title: new FormControl("", [Validators.required, Validators.minLength(10)]),
+    body: new FormControl("", [Validators.required]),
+    price: new FormControl(0, [Validators.required, Validators.pattern('[0-9]+')]),
     active: new FormControl(false)
   });
   constructor() { }
