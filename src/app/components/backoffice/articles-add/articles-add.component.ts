@@ -1,3 +1,4 @@
+import { ArticleService } from './../../../services/article.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -14,9 +15,12 @@ export class ArticlesAddComponent implements OnInit {
     price: new FormControl(0, [Validators.required, Validators.pattern('[0-9]+')]),
     active: new FormControl(false)
   });
-  constructor() { }
+  constructor(private articleService: ArticleService) { }
 
   ngOnInit() {
   }
 
+  persistArticle() {
+    this.articleService.saveArticle(this.articleForm.value);
+  }
 }
