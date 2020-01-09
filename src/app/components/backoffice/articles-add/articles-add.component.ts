@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-articles-add',
@@ -7,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlesAddComponent implements OnInit {
 
+  articleForm = new FormGroup({
+    title: new FormControl(""),
+    body: new FormControl(""),
+    price: new FormControl(0),
+    active: new FormControl(false)
+  });
   constructor() { }
 
   ngOnInit() {
