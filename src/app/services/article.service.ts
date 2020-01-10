@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Article } from '../models/article';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -12,7 +13,13 @@ export class ArticleService {
 
   getAll() {
 
-    return this.afs.collection('articles').valueChanges();
+    return this.afs.collection('articles').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Article;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
   }
 
   saveArticle(data: Article) {

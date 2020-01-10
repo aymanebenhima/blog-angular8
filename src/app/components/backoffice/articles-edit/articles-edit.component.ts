@@ -2,7 +2,7 @@ import { ArticleService } from './../../../services/article.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Article } from 'src/app/models/article';
+import { Article } from './../../../models/article';
 
 @Component({
   selector: 'app-articles-edit',
@@ -20,7 +20,10 @@ export class ArticlesEditComponent implements OnInit {
 
   id: string = "";
 
-  constructor(private articleSerivce: ArticleService, private route: ActivatedRoute) { }
+  constructor(
+              private articleSerivce: ArticleService,
+              private route: ActivatedRoute
+              ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
