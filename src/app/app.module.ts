@@ -14,6 +14,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -21,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     CommonModule,
     BrowserAnimationsModule,
+    AngularFireAuthModule,
     ToastrModule.forRoot()
   ],
   providers: [],
